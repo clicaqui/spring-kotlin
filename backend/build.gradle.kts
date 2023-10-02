@@ -51,7 +51,7 @@ allprojects {
         }
     }
 //}
-    var fatJar = task("fatJar", type = Jar::class) {
+  /*  var fatJar = task("fatJar", type = Jar::class) {
         //baseName = "${project.name}-fat"
         manifest {
             attributes["Main-Class"] = "br.clicaqui.MainKt"
@@ -74,3 +74,4 @@ allprojects {
         }
     }
 
+*/
