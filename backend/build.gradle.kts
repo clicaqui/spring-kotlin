@@ -1,11 +1,16 @@
 import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+import org.springframework.boot.gradle.tasks.run.BootRun
 
 
 plugins {
     kotlin("jvm") version "1.8.21"
     id("io.spring.dependency-management") version "1.1.3"
+    application
 }
+
 
 buildscript {
     val springBootVersion: String = properties["springBootVersion"] as String
@@ -18,6 +23,7 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
         //classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
     }
+
 }
 
 allprojects {
@@ -29,14 +35,14 @@ allprojects {
     }
 }
 
-
-
+//subprojects {
 //subprojects {
     val kotlinVersion = properties["kotlinVersion"] as String
 
 
     apply {
         plugin("org.springframework.boot")
+        plugin("application")
     }
 
     dependencies {
@@ -50,6 +56,16 @@ allprojects {
             jvmTarget = "1.8"
         }
     }
+
+    tasks.named<BootJar>("bootJar") {
+        mainClass = "com.example.ExampleApplication"
+    }
+    application {
+        tasks.named<BootRun>("bootRun") {
+            mainClass.set("com.clicaqui.Config")
+        }
+    }
+
 //}
   /*  var fatJar = task("fatJar", type = Jar::class) {
         //baseName = "${project.name}-fat"
