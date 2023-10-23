@@ -8,7 +8,7 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
    //id("java")
     kotlin("jvm") version "1.8.21"
-    kotlin("plugin.spring") version "1.3.61"
+    kotlin("plugin.spring") version embeddedKotlinVersion
     id("io.spring.dependency-management") version "1.1.3"
     application
 }
@@ -23,7 +23,7 @@ buildscript {
 
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-        classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
+        //classpath("io.spring.gradle:dependency-management-plugin:1.1.3")
     }
 }
 
@@ -50,6 +50,7 @@ allprojects {
     dependencies {
         //implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-devtools")
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
         implementation(kotlin("reflect", kotlinVersion))
     }
