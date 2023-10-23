@@ -10,7 +10,10 @@ open class Config(private val helloWorld: HelloWorld): CommandLineRunner {
         helloWorld.sayHello()
     }
 
-    fun main(args: Array<String>) {
-        SpringApplication.run(Config::class.java, *args)
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(Config::class.java, *args)
+        }
     }
 }

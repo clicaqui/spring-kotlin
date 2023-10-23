@@ -1,5 +1,6 @@
+
 allprojects {
-    group = "com.packtpub"
+    group = "com.clicaqui"
     version = "1.0"
     repositories {
         jcenter()
