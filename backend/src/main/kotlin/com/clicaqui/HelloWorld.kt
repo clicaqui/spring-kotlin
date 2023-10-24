@@ -1,10 +1,12 @@
 package com.clicaqui
 
-import org.springframework.stereotype.Service
+interface IHelloSayer {
+    fun sayHello(s: String): String
+}
 
 //@Service
-open class HelloWorld {
-    fun sayHello() {
-        println("Hello world")
+internal class HelloWorld : IHelloSayer {
+    override fun sayHello(s: String): String {
+        return "Hello $s"
     }
 }

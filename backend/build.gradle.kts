@@ -41,6 +41,7 @@ allprojects {
         name to "backend"
     )
     val kotlinVersion = properties["kotlinVersion"] as String
+    val kotlinxHtmlVersion = properties["kotlinHtmlVersion"] as String
 
     apply {
         plugin("org.springframework.boot")
@@ -50,7 +51,9 @@ allprojects {
     dependencies {
         //implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.springframework.boot:spring-boot-devtools")
+        implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinxHtmlVersion")
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
         implementation(kotlin("reflect", kotlinVersion))
     }

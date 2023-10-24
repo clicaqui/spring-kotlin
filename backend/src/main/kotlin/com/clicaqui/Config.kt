@@ -9,10 +9,7 @@ import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.beans
 
 @SpringBootApplication
-open class Config(private val helloWorld: HelloWorld): CommandLineRunner {
-    override fun run(vararg args: String?) {
-        helloWorld.sayHello()
-    }
+class Config {
 
     companion object {
         @JvmStatic
@@ -20,7 +17,7 @@ open class Config(private val helloWorld: HelloWorld): CommandLineRunner {
             val application = SpringApplication(Config::class.java)
             application.addInitializers(ApplicationContextInitializer<GenericApplicationContext> {  ctx ->
                 beans {
-                    bean<HelloWorld>()
+                    bean<HelloWorldConfig>()
                 }.initialize(ctx)
             })
             application.run(*args)
