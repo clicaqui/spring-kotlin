@@ -1,12 +1,12 @@
 package com.clicaqui
 
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.beans
 
-class HelloWorldConfig(ctx: GenericApplicationContext) {
-    init {
-        beans {
-            bean<HelloWorld>()
-        }.initialize(ctx)
-    }
+@Configuration
+class HelloWorldConfig {
+    @Bean
+    fun helloSayer(): IHelloSayer = HelloWorld()
 }

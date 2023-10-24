@@ -17,7 +17,9 @@ class Config {
             val application = SpringApplication(Config::class.java)
             application.addInitializers(ApplicationContextInitializer<GenericApplicationContext> {  ctx ->
                 beans {
-                    bean<HelloWorldConfig>()
+                    bean {
+                        ViewRoutes(ref())
+                    }
                 }.initialize(ctx)
             })
             application.run(*args)
