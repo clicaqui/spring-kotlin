@@ -1,14 +1,16 @@
 package com.clicaqui
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.CommandLineRunner
+import com.clicaqui.routes.ApiRoutes
+import com.clicaqui.routes.ViewRoutes
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.beans
 
 @SpringBootApplication
+@EnableAutoConfiguration()
 class Config {
 
     companion object {
@@ -19,6 +21,9 @@ class Config {
                 beans {
                     bean {
                         ViewRoutes(ref())
+                    }
+                    bean {
+                        ApiRoutes(ref())
                     }
                 }.initialize(ctx)
             })

@@ -1,5 +1,7 @@
-package com.clicaqui
+package com.clicaqui.routes
 
+import com.clicaqui.IHelloSayer
+import com.clicaqui.util.htmlView
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import org.springframework.context.annotation.Bean
@@ -8,7 +10,6 @@ import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.server.RouterFunction
 import org.springframework.web.reactive.function.server.ServerResponse
 import org.springframework.web.reactive.function.server.router
-import org.springframework.web.reactive.function.server.body
 import reactor.core.publisher.Mono
 
 class ViewRoutes(private val helloWorld: IHelloSayer) {
@@ -25,8 +26,7 @@ class ViewRoutes(private val helloWorld: IHelloSayer) {
                 GET("/hello") {req ->
                     val name = req.queryParam("name").orElse("User")
                     ServerResponse.ok()
-                        .contentType(MediaType.TEXT_HTML)
-                        .body(Mono.just(
+                        .htmlView(Mono.just(
                             createHTML(true).html {
                                 head {
                                     title = "Sabedoria é tudo"
@@ -50,6 +50,7 @@ class ViewRoutes(private val helloWorld: IHelloSayer) {
                                             }
                                         }
                                     }
+                                    script(src = "/static/js/hello.js")
                                 }
                             }
                         ))
