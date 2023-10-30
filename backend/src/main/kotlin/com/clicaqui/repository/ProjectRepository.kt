@@ -15,7 +15,7 @@ interface ProjectRepository : CrudRepository<Project, Long>{
 
     @Query("""
         SELECT
-        new com.packtpub.ProjectView(name, url, owner)
+        new com.clicaqui.ProjectView(name, url, owner)
         FROM Project
     """)
     fun retrieveAllProjectsForView(): List<ProjectView>

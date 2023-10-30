@@ -57,7 +57,7 @@ allprojects {
         implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinxHtmlVersion")
         implementation(kotlin("stdlib-jdk8", kotlinVersion))
         implementation(kotlin("reflect", kotlinVersion))
-        //implementation("org.postgresql:postgresql:$postgresVersion")
+        implementation("org.postgresql:postgresql:$postgresVersion")
     }
 
 

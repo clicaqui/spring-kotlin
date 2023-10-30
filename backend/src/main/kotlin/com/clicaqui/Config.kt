@@ -5,12 +5,12 @@ import com.clicaqui.routes.ViewRoutes
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.beans
 
 @SpringBootApplication
-@EnableAutoConfiguration()
 class Config {
 
     companion object {
