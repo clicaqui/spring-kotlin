@@ -3,9 +3,7 @@ package com.clicaqui
 import com.clicaqui.routes.ApiRoutes
 import com.clicaqui.routes.ViewRoutes
 import org.springframework.boot.SpringApplication
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.beans
@@ -13,8 +11,8 @@ import org.springframework.context.support.beans
 @SpringBootApplication
 class Config {
 
-    companion object {
-        @JvmStatic
+   // companion object {
+     //   @JvmStatic
         fun main(args: Array<String>) {
             val application = SpringApplication(Config::class.java)
             application.addInitializers(ApplicationContextInitializer<GenericApplicationContext> {  ctx ->
@@ -29,5 +27,5 @@ class Config {
             })
             application.run(*args)
         }
-    }
+    //}
 }

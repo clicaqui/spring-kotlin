@@ -1,6 +1,5 @@
 package com.clicaqui
 
-import org.springframework.context.annotation.Lazy
 import javax.persistence.*
 
 @Entity
