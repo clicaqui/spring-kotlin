@@ -11,8 +11,8 @@ import org.springframework.context.support.beans
 @SpringBootApplication
 class Config {
 
-   // companion object {
-     //   @JvmStatic
+    companion object {
+        @JvmStatic
         fun main(args: Array<String>) {
             val application = SpringApplication(Config::class.java)
             application.addInitializers(ApplicationContextInitializer<GenericApplicationContext> {  ctx ->
@@ -27,5 +27,5 @@ class Config {
             })
             application.run(*args)
         }
-    //}
+    }
 }

@@ -5,8 +5,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.8.21"
     kotlin("plugin.spring") version embeddedKotlinVersion
+    application
 }
-
 
 buildscript {
     val springBootVersion: String = properties["springBootVersion"] as String
@@ -45,6 +45,8 @@ subprojects {
         }
     }
 
-
 }
 
+application {
+    mainClass.set("com.clicaqui.Config")
+}
