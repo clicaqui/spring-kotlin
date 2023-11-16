@@ -7,7 +7,7 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
    // kotlin("jvm")
     kotlin("plugin.spring") version embeddedKotlinVersion
-    //application
+    application
 }
 
 
@@ -22,7 +22,7 @@ apply {
         //val kotlinxHtmlVersion: String = properties["kotlinxHtmlVersion"] as String
         val kotlinxHtmlVersion: String = "0.6.4"
         //val springBootVersion: String = properties["springBootVersion"] as String
-        val springBootVersion: String = "2.0.0.M4"
+        val springBootVersion: String = "2.6.0-M1"
         //val hibernateValidatorVersion: String = properties["hibernateValidatorVersion"] as String
         implementation(project(":backend:project"))
         //implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
@@ -47,8 +47,8 @@ apply {
 
     }
 
-//application {
-//    mainClass.set("com.clicaqui.Config")
-//}
+application {
+    mainClass.set("com.clicaqui.Config")
+}
 
 //}
