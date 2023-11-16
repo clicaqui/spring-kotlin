@@ -19,17 +19,15 @@ apply {
 //buildscript {
 
     dependencies {
-        //val kotlinxHtmlVersion: String = properties["kotlinxHtmlVersion"] as String
-        val kotlinxHtmlVersion: String = "0.6.4"
-        //val springBootVersion: String = properties["springBootVersion"] as String
-        val springBootVersion: String = "2.6.0-M1"
-        //val hibernateValidatorVersion: String = properties["hibernateValidatorVersion"] as String
+        val kotlinxHtmlVersion: String = properties["kotlinxHtmlVersion"] as String
+        val springBootVersion: String = properties["springBootVersion"] as String
+        val hibernateValidatorVersion: String = properties["hibernateValidatorVersion"] as String
         implementation(project(":backend:project"))
         //implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
         implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
         implementation("org.springframework.boot:spring-boot-devtools:$springBootVersion")
         implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinxHtmlVersion")
-        implementation("org.hibernate:hibernate-validator:6.0.2.Final")
+        implementation("org.hibernate:hibernate-validator:$hibernateValidatorVersion")
     }
 
     tasks.withType<KotlinCompile> {

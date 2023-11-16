@@ -21,7 +21,7 @@ class Config {
                         ViewRoutes(ref())
                     }
                     bean {
-                        ApiRoutes(ref())
+                        ApiRoutes(ref(), ref())
                     }
                 }.initialize(ctx)
             })
