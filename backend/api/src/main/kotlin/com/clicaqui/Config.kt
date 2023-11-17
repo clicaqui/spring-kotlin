@@ -1,5 +1,8 @@
 package com.clicaqui
 
+import com.clicaqui.handler.ApiHandler
+import com.clicaqui.handler.ExceptionHandler
+import com.clicaqui.handler.ViewHandler
 import com.clicaqui.routes.ApiRoutes
 import com.clicaqui.routes.ViewRoutes
 import org.springframework.boot.SpringApplication
@@ -17,12 +20,11 @@ class Config {
             val application = SpringApplication(Config::class.java)
             application.addInitializers(ApplicationContextInitializer<GenericApplicationContext> {  ctx ->
                 beans {
-                    bean {
-                        ViewRoutes(ref())
-                    }
-                    bean {
-                        ApiRoutes(ref(), ref())
-                    }
+                    bean { ViewHandler(ref()) }
+                    bean { ViewRoutes(ref()) }
+                    bean { ApiHandler(ref(), ref()) }
+                    bean { ApiRoutes(ref()) }
+                    bean<ExceptionHandler>()
                 }.initialize(ctx)
             })
             application.run(*args)

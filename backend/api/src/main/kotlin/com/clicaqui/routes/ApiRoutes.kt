@@ -1,15 +1,12 @@
 package com.clicaqui.routes
 
-import com.clicaqui.FieldErrorDTO
-import com.clicaqui.IHelloSayer
-import com.clicaqui.ProjectDTO
+import com.clicaqui.handler.ApiHandler
+import com.clicaqui.util.WithLogging
 import org.springframework.context.annotation.Bean
 import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.server.*
-import reactor.core.publisher.Mono
-import javax.validation.Validator
 
-class ApiRoutes(private val helloIHelloSayer: IHelloSayer, private val validator: Validator) {
+class ApiRoutes(private val apiHandler: ApiHandler): WithLogging() {
 
     @Bean
     fun apiRouter(): RouterFunction<ServerResponse> =
@@ -24,24 +21,15 @@ class ApiRoutes(private val helloIHelloSayer: IHelloSayer, private val validator
                 //        ))
                 //}
                 "/projects".nest {
-                    POST("/") {req ->
-                        req.bodyToMono<ProjectDTO>()
-                            .map { project ->
-                                val violations = validator.validate(project)
-                                if (violations.isNotEmpty()) {
-                                    project.fieldErrors = violations.map {
-                                        FieldErrorDTO(it.propertyPath.toString(), it.message)
-                                    }
-                                }
-                                project
-                            }.flatMap {
-                                when(it.fieldErrors) {
-                                    null -> ServerResponse.ok().body(Mono.just(it))
-                                    else -> ServerResponse.unprocessableEntity().body(Mono.just(it))
-                                }
-                            }
-                    }
+                    POST("/", apiHandler::handle)
+                    GET("/", apiHandler::getProjects)
+                    GET("/owners", apiHandler::getOwners)
+                    GET("/byOwner/{name}", apiHandler::getByOwner)
+                    GET("/{id}", apiHandler::getProject)
                 }
             }
+        }.filter { request, next ->
+            LOG.debug(request)
+            next.handle(request)
         }
 }
