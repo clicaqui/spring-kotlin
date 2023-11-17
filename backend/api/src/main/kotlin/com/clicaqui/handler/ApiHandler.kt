@@ -37,7 +37,7 @@ class ApiHandler(private val validator: Validator,
                 }
             }
 
-    fun getProjects(req: ServerRequest) =
+    fun getProjects(req: ServerRequest): Mono<ServerResponse> =
         ServerResponse.ok().body(
             Mono.just(projectService.fetchProjects().map { it.toDto() })
         )

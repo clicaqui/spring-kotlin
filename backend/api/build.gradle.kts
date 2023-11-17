@@ -7,13 +7,14 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
    // kotlin("jvm")
     kotlin("plugin.spring") version embeddedKotlinVersion
+    //kotlin("plugin.jpa") version embeddedKotlinVersion
     application
 }
 
 
 apply {
     plugin("org.springframework.boot")
-    //plugin("java")
+   // plugin("kotlin-jpa")
 }
 
 //buildscript {

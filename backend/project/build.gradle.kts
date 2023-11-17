@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     //kotlin("jvm")
     kotlin("plugin.spring") version embeddedKotlinVersion
-    //kotlin("plugin.jpa") version embeddedKotlinVersion
+    kotlin("plugin.jpa") version embeddedKotlinVersion
    // id("org.jetbrains.kotlin.plugin.jpa")
   ///  application
 }
