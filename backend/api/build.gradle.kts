@@ -28,9 +28,12 @@ application {
         implementation(project(":backend:project"))
         //implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
         implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
+        implementation("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
         compileOnly("org.springframework.boot:spring-boot-devtools:$springBootVersion")
         compileOnly("org.jetbrains.kotlinx:kotlinx-html-jvm:$kotlinxHtmlVersion")
         implementation("org.hibernate:hibernate-validator:$hibernateValidatorVersion")
+        implementation("io.micrometer:micrometer-registry-prometheus:1.10.5")
+        testImplementation(kotlin("test"))
     }
 
     tasks.withType<KotlinCompile> {
@@ -46,6 +49,10 @@ application {
     tasks.named<BootRun>("bootRun") {
         mainClass.set("com.clicaqui.Config")
 
+    }
+
+    tasks.test {
+        useJUnitPlatform()
     }
 
 //}
